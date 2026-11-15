@@ -1,0 +1,15 @@
+{
+  "name": "aero-grill-restaurant-os",
+  "version": "1.1.1",
+  "private": true,
+  "type": "module",
+  "description": "AI AutoTech restaurant ordering, checkout integration and installable PWA",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "node --env-file-if-exists=.env scripts/dev-server.js",
+    "dev": "node scripts/dev-server.js"
+  }
+}
