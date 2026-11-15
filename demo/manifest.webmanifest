@@ -1,0 +1,23 @@
+{
+  "id": "./",
+  "name": "Aero Grill Fish & Chips \u2014 Demo",
+  "short_name": "Aero Grill",
+  "description": "Offline demonstration of restaurant ordering and kitchen operations. No live orders or payments.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#100d0a",
+  "theme_color": "#100d0a",
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {verifyStandardWebhook,verifyMeta} from '../lib/server.js';import crypto from 'node:crypto';
+test('PWA includes installable icons and entry',()=>{const m=JSON.parse(fs.readFileSync(new URL('../manifest.webmanifest',import.meta.url),'utf8'));assert.equal(m.display,'standalone');assert.equal(m.icons.length,2)});
+test('payment signature rejects missing headers',()=>{assert.equal(verifyStandardWebhook({headers:{}},Buffer.from('{}'),'whsec_abc'),false)});
+test('Meta webhook signature valid',()=>{process.env.WA_APP_SECRET='a-test-secret';const data=Buffer.from('{"test":true}');const sig='sha256='+crypto.createHmac('sha256','a-test-secret').update(data).digest('hex');assert.ok(verifyMeta({headers:{'x-hub-signature-256':sig}},data))});
+test('private keys do not leak into browser bundle',()=>{const app=fs.readFileSync(new URL('../assets/app.js',import.meta.url),'utf8');assert.equal(/sk_live_|sk_test_|WA_ACCESS_TOKEN|RESTAURANT_INTERNAL_SECRET/.test(app),false)});
